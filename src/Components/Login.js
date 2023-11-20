@@ -19,7 +19,7 @@ const Login = (props) => {
           <Avatar style={avatarStyle}>!</Avatar>
           <h2>Sign In</h2>
           <Typography variant="h6" marginLeft="27px" align="left">Email:</Typography>
-          <TextField value={name} onChange={(e)=> setName(e.target.value)} id="outlined-basic" label="Enter your mail-id" variant="outlined" />
+          <TextField value={name} type='email' onChange={(e)=> setName(e.target.value)} id="outlined-basic" label="Enter your mail-id" variant="outlined" />
           <Typography variant="h6" marginLeft="27px" align="left">Password:</Typography>
           <TextField value={pass} onChange={(e)=> setPass(e.target.value)} id="outlined-basic" label="Enter your Password" type='password' variant="outlined" />
           <Button onClick={handleSubmit} sx={{ margin: '20px' }} variant="contained">Login</Button>
