@@ -1,63 +1,3 @@
-import React from "react";
-import { createStore } from "redux";
-import { Provider, useSelector, useDispatch } from "react-redux";
-
-const cartReducer = (state = [], action) => {
-  switch (action.type) {
-    case "ADD_TO_CART":
-      return [...state, action.payload];
-    case "REMOVE_FROM_CART":
-      return state.filter((item) => item.id !== action.payload.id);
-    default:
-      return state;
-  }
-};
-
-export const addToCart = (item) => ({
-  type: "ADD_TO_CART",
-  payload: item,
-});
-
-export const removeFromCart = (item) => ({
-  type: "REMOVE_FROM_CART",
-  payload: item,
-});
-
-const store = createStore(cartReducer);
-
-const CartPage = () => {
-  const cartItems = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  const handleAddToCart = (item) =>…
-[2:19 PM, 11/27/2023] Karthikeyan Skcet B: npm i redux react-redux
-[3:04 PM, 11/27/2023] Karthikeyan Skcet B: // AuthContext.js
-import React, { createContext, useContext, useState } from 'react';
-
-const AuthContext = createContext();
-
-export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const login = () => {
-    setIsAuthenticated(true);
-  };
-
-  const logout = () => {
-    setIsAuthenticated(false);
-  };
-
-  return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-[3:04 PM, 11/27/2023] Karthikeyan Skcet B: // Login.js
 import React, { useState,useEffect } from 'react';
 import { Avatar, Button, Container, Grid, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
@@ -76,7 +16,7 @@ const Login = () => {
   const [error, setError] = useState(false);
   const [exist, setExist] = useState(false);
   const navigate = useNavigate();
-  const { isAuthenticated, login } = useAuth();  // Use the useAuth hook
+  const { isAuthenticated, login } = useAuth(); 
 
   useEffect(() => {
     axios.get(url).then((response) => {
